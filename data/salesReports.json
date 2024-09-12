@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Q1 Sales Report",
+    "date": "2023-03-31",
+    "summary": "An overview of sales performance in Q1 2023.",
+    "content": "Detailed content of the Q1 sales report..."
+  },
+  {
+    "id": 2,
+    "title": "April Sales Report",
+    "date": "2023-04-30",
+    "summary": "Sales data for April 2023.",
+    "content": "Detailed content of the April sales report..."
+  }
+]

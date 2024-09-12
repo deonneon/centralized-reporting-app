@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Monthly Operations Analysis",
+    "date": "2024-04-30",
+    "summary": "Operations performance metrics for April.",
+    "content": "Detailed content of the Monthly Operations Analysis..."
+  },
+  {
+    "id": 2,
+    "title": "Supply Chain Report",
+    "date": "2024-05-31",
+    "summary": "Insights into the current supply chain status.",
+    "content": "Detailed content of the Supply Chain Report..."
+  }
+]

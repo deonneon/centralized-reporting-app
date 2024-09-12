@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "reportType": "Sales Report",
+    "status": "In Progress",
+    "description": "Need sales data for Q1.",
+    "statusHistory": [
+      {
+        "status": "Submitted",
+        "timestamp": "2023-09-01T10:00:00Z",
+        "note": "Request submitted."
+      },
+      {
+        "status": "In Progress",
+        "timestamp": "2023-09-02T14:30:00Z",
+        "note": "Analyst started working on the report."
+      }
+    ],
+    "messages": [
+      {
+        "sender": "User",
+        "content": "Can I get an update on the report?",
+        "timestamp": "2023-09-02T15:00:00Z"
+      },
+      {
+        "sender": "Analyst",
+        "content": "Working on it, should be ready by end of day.",
+        "timestamp": "2023-09-02T15:15:00Z"
+      }
+    ]
+  },
+  {
+    "id": 1697131200000,
+    "reportType": "Financial Report",
+    "status": "In Progress",
+    "description": "Q3 financial summary",
+    "priority": "Medium",
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "phone": "0987654321",
+    "attachments": [],
+    "operationsField": ""
+  },
+  {
+    "id": 1697217600000,
+    "reportType": "Operations Report",
+    "status": "Submitted",
+    "description": "Weekly operations overview",
+    "priority": "Low",
+    "name": "Carol Williams",
+    "email": "carol.williams@example.com",
+    "phone": "5555555555",
+    "attachments": [],
+    "operationsField": "Additional operations data"
+  },
+  {
+    "id": 1697304000000,
+    "reportType": "Sales Report",
+    "status": "Submitted",
+    "description": "Sales forecast for next quarter",
+    "priority": "High",
+    "name": "David Lee",
+    "email": "david.lee@example.com",
+    "phone": "6666666666",
+    "attachments": [],
+    "operationsField": ""
+  }
+]

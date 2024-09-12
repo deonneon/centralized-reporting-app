@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Q1 Finance Overview",
+    "date": "2024-03-31",
+    "summary": "A summary of financial performance for Q1.",
+    "content": "Detailed content of the Q1 Finance Overview..."
+  },
+  {
+    "id": 2,
+    "title": "Annual Financial Report",
+    "date": "2024-12-31",
+    "summary": "Comprehensive annual financial data.",
+    "content": "Detailed content of the Annual Financial Report..."
+  }
+]
