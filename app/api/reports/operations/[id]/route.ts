@@ -3,6 +3,15 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+// Define interface for operations report data structure
+interface OperationsReport {
+  id: number;
+  title: string;
+  date: string;
+  summary: string;
+  content: string;
+}
+
 const dataFilePath = path.join(process.cwd(), "data", "operationsReports.json");
 
 export async function GET(
@@ -11,9 +20,9 @@ export async function GET(
 ) {
   try {
     const fileData = fs.readFileSync(dataFilePath, "utf8");
-    const operationsReports = JSON.parse(fileData);
+    const operationsReports = JSON.parse(fileData) as OperationsReport[];
     const report = operationsReports.find(
-      (r: any) => r.id === parseInt(params.id, 10)
+      (r: OperationsReport) => r.id === parseInt(params.id, 10)
     );
 
     if (report) {

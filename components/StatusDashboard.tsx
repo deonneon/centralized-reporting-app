@@ -15,7 +15,13 @@ interface Request {
   statusHistory: StatusUpdate[]; // Add statusHistory field
 }
 
-const StatusDashboard = () => {
+interface StatusDashboardProps {
+  onRequestSelect?: (requestId: number) => void;
+}
+
+const StatusDashboard: React.FC<StatusDashboardProps> = ({
+  onRequestSelect,
+}) => {
   const [requests, setRequests] = useState<Request[]>([]);
 
   useEffect(() => {
@@ -40,6 +46,13 @@ const StatusDashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleRequestClick = (requestId: number, e: React.MouseEvent) => {
+    if (onRequestSelect) {
+      e.preventDefault();
+      onRequestSelect(requestId);
+    }
+  };
+
   return (
     <div className="p-4 rounded shadow">
       <h2 className="text-xl mb-4">Your Requests</h2>
@@ -58,6 +71,7 @@ const StatusDashboard = () => {
                 <Link
                   href={`/requests/${req.id}`}
                   className="text-blue-500 hover:underline"
+                  onClick={(e) => handleRequestClick(req.id, e)}
                 >
                   {req.reportType}
                 </Link>

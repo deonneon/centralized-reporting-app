@@ -5,10 +5,18 @@ import { useState } from "react";
 import RequestForm from "../../components/RequestForm";
 import TemplateGallery from "../../components/TemplateGallery";
 
-const RequestPage = () => {
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
+interface TemplateFields {
+  reportType: string;
+  priority: string;
+  description: string;
+}
 
-  const handleSelectTemplate = (templateFields) => {
+const RequestPage = () => {
+  const [selectedTemplate, setSelectedTemplate] = useState<
+    TemplateFields | undefined
+  >(undefined);
+
+  const handleSelectTemplate = (templateFields: TemplateFields) => {
     setSelectedTemplate(templateFields);
   };
 

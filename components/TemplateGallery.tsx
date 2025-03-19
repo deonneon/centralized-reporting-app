@@ -1,6 +1,22 @@
 import React from "react";
 
-const templates = [
+interface TemplateFields {
+  reportType: string;
+  priority: string;
+  description: string;
+}
+
+interface Template {
+  name: string;
+  description: string;
+  fields: TemplateFields;
+}
+
+interface TemplateGalleryProps {
+  onSelectTemplate: (fields: TemplateFields) => void;
+}
+
+const templates: Template[] = [
   {
     name: "Monthly Sales Report",
     description: "Detailed sales figures for the month.",
@@ -13,7 +29,9 @@ const templates = [
   // Add more templates as needed
 ];
 
-const TemplateGallery = ({ onSelectTemplate }) => {
+const TemplateGallery: React.FC<TemplateGalleryProps> = ({
+  onSelectTemplate,
+}) => {
   return (
     <div className="p-4 rounded shadow">
       <h2 className="text-xl mb-4">Template Gallery</h2>

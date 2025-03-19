@@ -3,6 +3,15 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+interface ReportRequest {
+  id: number;
+  messages?: Array<{
+    sender: string;
+    content: string;
+    timestamp: string;
+  }>;
+}
+
 const dataFilePath = path.join(process.cwd(), "data", "requests.json");
 
 export async function GET(
@@ -12,7 +21,9 @@ export async function GET(
   try {
     const fileData = fs.readFileSync(dataFilePath, "utf8");
     const requests = JSON.parse(fileData);
-    const req = requests.find((r: any) => r.id === parseInt(params.id, 10));
+    const req = requests.find(
+      (r: ReportRequest) => r.id === parseInt(params.id, 10)
+    );
 
     if (req) {
       return NextResponse.json(req.messages || []);
@@ -38,7 +49,7 @@ export async function POST(
     const requests = JSON.parse(fileData);
 
     const requestIndex = requests.findIndex(
-      (req) => req.id === parseInt(params.id, 10)
+      (req: ReportRequest) => req.id === parseInt(params.id, 10)
     );
     if (requestIndex === -1) {
       return NextResponse.json(

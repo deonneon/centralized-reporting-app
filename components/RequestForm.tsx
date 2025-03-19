@@ -9,25 +9,36 @@ interface RequestFormProps {
   };
 }
 
+interface RequestFormData {
+  reportType: string;
+  priority: string;
+  description: string;
+  operationsField?: string;
+  attachments?: FileList;
+  name: string;
+  email: string;
+  phone: string;
+}
+
 const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm<RequestFormData>();
   const [step, setStep] = useState(1);
   const [reportType, setReportType] = useState("");
 
   useEffect(() => {
     if (prefillData) {
       Object.entries(prefillData).forEach(([key, value]) => {
-        setValue(key, value);
+        setValue(key as keyof RequestFormData, value);
       });
     }
   }, [prefillData, setValue]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: RequestFormData) => {
     try {
       const response = await fetch("/api/requests", {
         method: "POST",
@@ -111,7 +122,9 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
               <option value="operations">Operations Report</option>
             </select>
             {errors.reportType && (
-              <p className="text-red-500">{errors.reportType.message}</p>
+              <p className="text-red-500">
+                {errors.reportType.message?.toString()}
+              </p>
             )}
           </div>
           {/* Priority Field */}
@@ -127,7 +140,9 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
               <option value="high">High</option>
             </select>
             {errors.priority && (
-              <p className="text-red-500">{errors.priority.message}</p>
+              <p className="text-red-500">
+                {errors.priority.message?.toString()}
+              </p>
             )}
           </div>
           <button
@@ -153,7 +168,9 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
               rows={4}
             ></textarea>
             {errors.description && (
-              <p className="text-red-500">{errors.description.message}</p>
+              <p className="text-red-500">
+                {errors.description.message?.toString()}
+              </p>
             )}
           </div>
           {/* Conditional Field */}
@@ -168,7 +185,9 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
                 type="text"
               />
               {errors.operationsField && (
-                <p className="text-red-500">{errors.operationsField.message}</p>
+                <p className="text-red-500">
+                  {errors.operationsField.message?.toString()}
+                </p>
               )}
             </div>
           )}
@@ -214,7 +233,7 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
               type="text"
             />
             {errors.name && (
-              <p className="text-red-500">{errors.name.message}</p>
+              <p className="text-red-500">{errors.name.message?.toString()}</p>
             )}
           </div>
           {/* Email Field */}
@@ -232,7 +251,7 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
               type="email"
             />
             {errors.email && (
-              <p className="text-red-500">{errors.email.message}</p>
+              <p className="text-red-500">{errors.email.message?.toString()}</p>
             )}
           </div>
           {/* Phone Field */}
@@ -250,7 +269,7 @@ const RequestForm: React.FC<RequestFormProps> = ({ prefillData }) => {
               type="tel"
             />
             {errors.phone && (
-              <p className="text-red-500">{errors.phone.message}</p>
+              <p className="text-red-500">{errors.phone.message?.toString()}</p>
             )}
           </div>
           <div className="space-x-4">

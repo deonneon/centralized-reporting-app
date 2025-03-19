@@ -2,6 +2,16 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+interface ReportRequest {
+  id: number;
+  status: string;
+  statusHistory?: Array<{
+    status: string;
+    timestamp: string;
+    note: string;
+  }>;
+}
+
 const dataFilePath = path.join(process.cwd(), "data", "requests.json");
 
 export async function GET() {
@@ -21,7 +31,9 @@ export async function PUT(request: Request) {
     const fileData = fs.readFileSync(dataFilePath, "utf8");
     const requests = JSON.parse(fileData);
 
-    const requestIndex = requests.findIndex((req) => req.id === id);
+    const requestIndex = requests.findIndex(
+      (req: ReportRequest) => req.id === id
+    );
     if (requestIndex === -1) {
       return NextResponse.json(
         { message: "Request not found" },
